@@ -1,7 +1,37 @@
 AC_PREREQ(2.57)
 
-AC_INIT([c-ares], [1.16.1],
+AC_INIT([c-ares], [1.17.1],
   [c-ares mailing list: http://cool.haxx.se/mailman/listinfo/c-ares])
+
+CARES_VERSION_INFO="6:2:4"
+dnl This flag accepts an argument of the form current[:revision[:age]]. So,
+dnl passing -version-info 3:12:1 sets current to 3, revision to 12, and age to
+dnl 1.
+dnl
+dnl If either revision or age are omitted, they default to 0. Also note that age
+dnl must be less than or equal to the current interface number.
+dnl
+dnl Here are a set of rules to help you update your library version information:
+dnl
+dnl 1.Start with version information of 0:0:0 for each libtool library.
+dnl
+dnl 2.Update the version information only immediately before a public release of
+dnl your software. More frequent updates are unnecessary, and only guarantee
+dnl that the current interface number gets larger faster.
+dnl
+dnl 3.If the library source code has changed at all since the last update, then
+dnl increment revision (c:r+1:a)
+dnl
+dnl 4.If any interfaces have been added, removed, or changed since the last
+dnl update, increment current, and set revision to 0. (c+1:r=0:a)
+dnl
+dnl 5.If any interfaces have been added since the last public release, then
+dnl increment age. (c:r:a+1)
+dnl
+dnl 6.If any interfaces have been removed since the last public release, then
+dnl set age to 0. (c:r:a=0)
+dnl
+AC_SUBST([CARES_VERSION_INFO])
 
 XC_OVR_ZZ50
 XC_OVR_ZZ60
